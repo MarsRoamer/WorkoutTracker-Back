@@ -45,6 +45,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'foreman', '~> 0.82.0'
 gem 'active_model_serializers'
-gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'knock', '~> 2.0'
+gem 'pry'
+gem 'devise'

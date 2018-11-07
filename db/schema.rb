@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_15_161441) do
+ActiveRecord::Schema.define(version: 2018_10_25_163546) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
@@ -20,10 +20,30 @@ ActiveRecord::Schema.define(version: 2018_10_15_161441) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_exercises", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "exercise_id"
+    t.integer "reps"
+    t.integer "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_user_exercises_on_exercise_id"
+    t.index ["user_id"], name: "index_user_exercises_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "arr"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
