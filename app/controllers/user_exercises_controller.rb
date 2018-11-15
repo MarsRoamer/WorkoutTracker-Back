@@ -24,7 +24,7 @@ class UserExercisesController < ApplicationController
 		  else
 		  	user = params["userId"]
 		  	lift = params["liftId"]
-		  	userLifts = UserExercise.where("user_id = ? AND exercise_id = ?", user, lift)
+		  	userLifts = UserExercise.where("user_id = ? AND exercise_id = ?", user, lift).order('created_at desc')
 		  	render :json => userLifts
 		  end
 
